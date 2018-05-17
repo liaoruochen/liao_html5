@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="titleBar">
+    <view class="status">
+      <!-- wxml 模板{{数据状态}} 数据绑定 动态 可编译的 活的
+             data 是活的 setDATE 只要状态一变 界面立即改变
+        -->
+      <text class="{{status=='1'?'active':''}}" data-status="1" bindtap="showStatus">全部</text>
+      <text class="{{status=='2'?'active':''}}" data-status="2" bindtap="showStatus">未完成</text>
+      <text class="{{status=='3'?'active':''}}" data-status="3" bindtap="showStatus">已完成</text>
+    </view>
+    <view class="add">
+      <button class="mini-btn" size="mini" type="warn" bindtap="addTodoShow">
+        添加
+      </button>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="lists">
+    <view class="item" wx:for="{{lists}}" wx:key="index">
+      <div class="content">
+        <icon class="icon-small" data-item="{{index}}" bindtap="changeTodo" size="23" type="{{item.status=='1'?'success':'circle'}}"></icon>
+        <text class="title">{{item.title}}</text>
+        <text class="time">{{item.time}}</text>
+      </div>
+    </view>
+  </scroll-view>
+
+  <view class="addForm {{addShow?'Hide':''}}">
+    <view class="addForm-div">
+      <input type="text" placeholder="请输入任务" value="{{addText}}" bindinput="setInput" class="weui-input" />
+      <view class="addForm-btn">
+        <button size="mini" type="warn" class="weui-btn mini-btn" bindtap="addTodo">确定添加</button>
+        <button size="mini" type="default" class="weui-btn mini-btn" bindtap="addTodoHide">取消</button>
+      </view>
+    </view>
+  </view>
+</view>
