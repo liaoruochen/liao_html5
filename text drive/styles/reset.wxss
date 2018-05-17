@@ -1,0 +1,11 @@
+image{
+    width: 100%;
+    display: block;
+}
+video{
+    width: 100%;
+}
+page{
+    font-size: 32rpx;
+    line-height: 1.5;
+}
